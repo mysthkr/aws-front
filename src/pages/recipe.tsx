@@ -25,7 +25,7 @@ const fetcher = (url: string) => {
 
 const Recipe: NextPage = () => {
   const { data, error } = useSWR(
-    "http://localhost:3010/api/v1/stock_items/recipes",
+    "http://52.195.64.253:3010/api/v1/stock_items/recipes",
     fetcher
   );
 

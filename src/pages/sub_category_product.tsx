@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps =
 
 const SubCategoryProduct: NextPage = () => {
   const { data, error } = useSWR(
-    "http://localhost:3010/api/v1/sub_category_products",
+    "http://52.195.64.253:3010/api/v1/sub_category_products",
     fetcher
   );
 

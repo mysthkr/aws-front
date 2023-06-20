@@ -33,7 +33,7 @@ const Request: NextPage = (props: any) => {
     const userId = cookieData ? cookieData.userId : '';
     const groupId = cookieData ? cookieData.groupId : '';
     const axiosInstance = axios.create({
-      baseURL: `http://localhost:3010/api/v1/`,
+      baseURL: `http://52.195.64.253:3010/api/v1/`,
     });
       setIsError(false);
       setErrorMessage("");

@@ -7,7 +7,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Product: NextPage = () => {
   const { data, error } = useSWR(
-    "http://localhost:3010/api/v1/shops",
+    "http://52.195.64.253:3010/api/v1/shops",
     fetcher
   );
 

@@ -19,8 +19,18 @@ const Signup = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    const email = data.get("email");
+    const password = data.get("password");
+
+    if (!email || !password) {
+      setIsError(true);
+      setErrorMessage("メールアドレスとパスワードを入力してください");
+      return;
+    }
+
     const axiosInstance = axios.create({
-      baseURL: `http://localhost:3010/api/v1/`,
+      baseURL: `http://52.195.64.253:3010/api/v1/`,
       headers: {
         "content-type": "application/json",
       },
@@ -42,8 +52,8 @@ const Signup = () => {
             setErrorMessage("");
             return await axiosInstance
               .post("auth", {
-                email: data.get("email"),
-                password: data.get("password"),
+                email: email,
+                password: password,
                 group_id: group_id,
               })
               .then(function (response) {
@@ -74,19 +84,19 @@ const Signup = () => {
                     })
                     .catch(function (error) {
                       setIsError(true);
-                      setErrorMessage(error.response.data.errors[0]);
+                      setErrorMessage("やり直してください。");
                     });
                   })();
                 })
               .catch(function (error) {
                 setIsError(true);
-                setErrorMessage(error.response.data.errors[0]);
+                setErrorMessage("やり直してください。");
               });
           })();
         })
         .catch(function (error) {
           setIsError(true);
-          setErrorMessage(error.response.data.errors[0]);
+          setErrorMessage("やり直してください。");
         });
     })();
     

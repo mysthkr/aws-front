@@ -50,7 +50,7 @@ const CustomDataGrid = styled(DataGrid)({
 
 const StockItem: NextPage = () => {
   const { data, error } = useSWR(
-    "http://localhost:3010/api/v1/stock_items",
+    "http://52.195.64.253:3010/api/v1/stock_items",
     fetcher
   );
   const [isLoading, setIsLoading] = useState(false);
@@ -111,7 +111,7 @@ const StockItem: NextPage = () => {
     setIsLoading(true);
     const cookieData = getCookie();
     try {
-      const response = await fetch(`http://localhost:3010/api/v1/stock_items/${stockItemId}`, {
+      const response = await fetch(`http://52.195.64.253:3010/api/v1/stock_items/${stockItemId}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: {
@@ -128,7 +128,7 @@ const StockItem: NextPage = () => {
       // この部分でレスポンスを処理します...
       const data = await response.json();
       toast.success("ストックから削除しました！");
-      mutate('http://localhost:3010/api/v1/stock_items');
+      mutate('http://52.195.64.253:3010/api/v1/stock_items');
     } catch (error) {
       console.error('An error occurred:', error);
       toast.error("削除できません！");

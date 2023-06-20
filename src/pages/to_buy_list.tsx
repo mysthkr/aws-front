@@ -41,7 +41,7 @@ const ToBuyList: NextPage = () => {
   // checkCookie();
   const [text, setText] = useState('');
   const { data, error } = useSWR(
-    `http://localhost:3010/api/v1/to_buy_lists`,
+    `http://52.195.64.253:3010/api/v1/to_buy_lists`,
     fetcher
   );
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +57,7 @@ const ToBuyList: NextPage = () => {
   // START HERE for fetchAllCriteriaData
   const fetchAllData = async () => {
     const cookieData = getCookie();
-    const response = await fetch("http://localhost:3010/api/v1/criteria_days",{
+    const response = await fetch("http://52.195.64.253:3010/api/v1/criteria_days",{
       credentials: 'include',
       headers: {
         "Content-Type": "application/json",
@@ -102,7 +102,7 @@ const ToBuyList: NextPage = () => {
     setIsLoading(true);
     const cookieData = getCookie();
     try {
-      const response = await fetch(`http://localhost:3010/api/v1/to_buy_lists/${toBuyListId}`, {
+      const response = await fetch(`http://52.195.64.253:3010/api/v1/to_buy_lists/${toBuyListId}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: {
@@ -119,7 +119,7 @@ const ToBuyList: NextPage = () => {
       // この部分でレスポンスを処理します...
       const data = await response.json();
       toast.success("買い物リストから削除しました！");
-      mutate('http://localhost:3010/api/v1/to_buy_lists');
+      mutate('http://52.195.64.253:3010/api/v1/to_buy_lists');
     } catch (error) {
       console.error('An error occurred:', error);
       toast.error("削除できません！");
@@ -146,7 +146,7 @@ const ToBuyList: NextPage = () => {
           criteria: Number(displayItemData(Number(item_id)) ? displayItemData(Number(item_id)) : 0),
           item_id: Number(item_id),
         }
-        const response = await fetch('http://localhost:3010/api/v1/carts', {
+        const response = await fetch('http://52.195.64.253:3010/api/v1/carts', {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -224,7 +224,7 @@ const ToBuyList: NextPage = () => {
   //   console.log(text);
   //   const cookieData = getCookie();
   //   const axiosInstance = axios.create({
-  //     baseURL: `http://localhost:3010/api/v1/`,
+  //     baseURL: `http://52.195.64.253:3010/api/v1/`,
   //   });
   //   (async () => {
   //     setIsError(false);
@@ -280,7 +280,7 @@ const ToBuyList: NextPage = () => {
   //   setIsLoading(true);
 
   //   try {
-  //     const response = await fetch(`http://localhost:3010/api/v1/`, {
+  //     const response = await fetch(`http://52.195.64.253:3010/api/v1/`, {
   //       method: 'POST',
   //       headers: {
   //         'Content-Type': 'application/json',

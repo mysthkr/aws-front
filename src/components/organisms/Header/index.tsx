@@ -115,7 +115,7 @@ const Header = () => {
   console.log("userId, groupId");
   console.log(userId, groupId);
   const { data, error } = useSWR(
-    `http://localhost:3010/api/v1/stock_items/alarms`,
+    `http://52.195.64.253:3010/api/v1/stock_items/alarms`,
     fetcher
   );
   if (error) return <div>An error has occurred.</div>;
